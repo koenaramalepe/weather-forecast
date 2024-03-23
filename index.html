@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styling/styling.css" />
+    <title>My weather application</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="application">
+      <header>
+        <form class="form1" id="form1">
+          <input
+            type="search"
+            placeholder="Enter a city.."
+            required
+            class="search-input"
+            id="search-input"
+          />
+          <input type="submit" value="Search" class="search-button" />
+        </form>
+      </header>
+      <main>
+        <div class="weather-forecast">
+          <div>
+            <h1 class="city-name" id="city-name"></h1>
+            <p class="current-details">
+              <span id="time"> </span> <span id="weatherDescription"></span><br />
+              Humidity: <strong id="humidity"></strong>, Wind: <strong id="windData">7.2km/h</strong>
+            </p>
+          </div>
+          <div class="temperature">
+            <div class="icon" id="icon"></div>
+            
+            <span class="temperature-value" id="temperature"> </span>
+            <span class="temperature-unit"> °C </span>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <p>
+          This project was coded by
+          <a href="https://github.com/koenaramalepe" target="_blank">Koena Ramalepe</a> and is
+          <a href="https://github.com/koenaramalepe/weather-app" target="_blank"> on GitHub</a> and
+          <a href="https://weather-app-vanilla-shecodes-app.netlify.app/" target="_blank">hosted on Netlify</a>
+        </p>
+      </footer>
+    </div>
+    <script src="script/functionality.js"></script>
+  </body>
+</html>
