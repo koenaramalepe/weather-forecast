@@ -61,29 +61,41 @@ function getForecast(city){
     axios.get(apiUrl).then(displayForecast);
 }
 
-function displayForecast (response) {
-    console.log(response.data)
+function formatDay(timestamp){
+    let date = new Date(timestamp *1000);
+    let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
+    return days[date.getDay()];
+}
 
+function displayForecast(response) {
+    
     let forecastElement = document.querySelector("#forecast");
-    let days = ["Mon","Tue","wed","Thu","Fri","Sat","Sun"]
-    let forecastHtml = ""
+    
+    let forecastHtml = "";
 
-    days.forEach(function(day) {
+    response.data.daily.forEach(function(day,index) {
+        if (index < 5) {
         forecastHtml= forecastHtml +
         `
         <div class="forecast-day">
-        <div class="forecast-date"> ${day}</div>
-        <div class="forecast-icon"> 🌤️</div>
+        <div class="forecast-date">${formatDay(day.time)}</div>
+        <div >
+            <img src="${day.condition.icon_url}" class="forecast-icon" />
+        </div>
         <div class="forecast-temperatures">
-        <div class="forecast-max">18°</div>
-        <div class="forecast-min">12°</div>
+        <div class="forecast-max">${Math.round(day.temperature.maximum)}°</div>
+        <div class="forecast-min">${Math.round(day.temperature.minimum)}°</div>
         </div>
         </div>`;
+        }
     });
+
     forecastElement.innerHTML = forecastHtml;
     
 }
+
+
 
 let formInput = document.querySelector("#form1");
 formInput.addEventListener("submit", handlingResponse);
